@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-o-@tg3p_j67=g3qhfutl38ne!6eq+ufjddln1s_j*9g-j0&w3a
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '.vercel.app']
 
 
 INSTALLED_APPS = [
@@ -61,8 +61,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'Fg41egde5GGgEFfdgGd--G3-aFafEdBC',
+        'HOST': 'monorail.proxy.rlwy.net', 'PORT': '57419'
     }
 }
 
