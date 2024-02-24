@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    {% include "includes/header.html" %} {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="{{message.tags}}">
+        {{message|safe}}
+
+        <a href="#" class="close">x</a>
+      </li>
+
+      {% endfor %}
+    </ul>
+
+    {% endif %}
+
+    <div id="content">{% block content %} {% endblock content %}</div>
+    {% include "includes/footer.html" %}
+  </body>
+</html>

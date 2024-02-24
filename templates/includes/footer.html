@@ -1,0 +1,18 @@
+<footer
+  style="
+    min-height: 10vh;
+    display: flex;
+    width: 100%;
+    background-color: chartreuse;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <p style="color: white">Copyright &copy; <span id="year"></span></p>
+</footer>
+
+<script>
+  document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>

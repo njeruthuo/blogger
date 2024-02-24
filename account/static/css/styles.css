@@ -1,0 +1,9 @@
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    position: fixed;
+    bottom: 0;
+    background-color: chartreuse;
+}

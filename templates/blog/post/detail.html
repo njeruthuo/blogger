@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+<!--  -->
+{% block title %} {{post.title}}{% endblock %}
+<!--  -->
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+{{ post.body|linebreaks }}
+<p>
+  <a href="{% url 'blog:post_share' post.id %}"> Share this post </a>
+</p>
+
+<div>
+  <h2>Add a new comment</h2>
+  <form action="" method="post">
+    {% for field in form %} {{ field.label_tag }} {{ field }} {% endfor %}
+    <!-- {{ form.as_p }} -->
+    {% csrf_token %}
+    <input type="submit" value="Add comment" />
+  </form>
+</div>
+<div class="comments">
+  <ul>
+    {% for comment in comments %}
+    <hr />
+    <div style="margin: 2rem 0; display: flex; justify-content: space-between">
+      <li>
+        <span style="color: rgb(92, 89, 89); font-size: large; margin: 0 1rem">
+          {{comment.body}}
+        </span>
+
+        &centerdot;
+        <span style="color: gray; font-size: smaller"
+          >{{comment.commentator|upper}}</span
+        >
+        &centerdot;
+        <span style="color: gray; font-size: x-small; margin: 0 1rem"
+          >{{comment.created|timesince}}</span
+        >
+      </li>
+      {% if request.user == comment.commentator %}
+      <button style="color: rgb(62, 202, 62)">Edit comment</button>
+      <button style="color: rgb(216, 60, 60)">
+        <a href="{% url 'blog:delete' comment.id %}">Delete comment</a>
+      </button>
+      {% endif %}
+    </div>
+
+    {% endfor %}
+  </ul>
+  <hr />
+</div>
+{% endblock %}

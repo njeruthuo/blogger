@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% include "includes/header.html" %}
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="sidebar">
+      <h2>My Blog</h2>
+      <p>Advanced features will appear here in the next release.</p>
+      <ul>
+        <li>Recommended posts</li>
+        <li>Latest items</li>
+        <li>Postgres advanced features</li>
+      </ul>
+    </div>
+    {% include "includes/footer.html" %}
+  </body>
+</html>

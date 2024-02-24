@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %} Dashboard {% endblock title %}
+
+<!--  -->
+{% block content %}
+<div style="margin-bottom: 2rem">
+  <h1>Dashboard</h1>
+  Welcome to your dashboard. You can
+  <a href="{% url 'account:edit' %}">edit your profile</a> or
+  <a href="{% url 'account:password_change' %}">change your password</a>.
+</div>
+
+<hr />
+<div style="margin-top: 2rem">
+  {% for post in posts %}
+  <h2>
+    <a href="{{ post.get_absolute_url }}"> {{ post.title }} </a>
+  </h2>
+
+  <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+  {{ post.body|truncatewords:30|linebreaks }} {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,80 @@
+{% load static %}
+
+<header
+  style="background-color: rgb(145, 254, 35)"
+  class="sticky top-0 z-10 text-white"
+>
+  <section class="mx-auto flex max-w-4xl items-center justify-between p-4">
+    <h1 class="text-3xl font-medium">
+      <a style="text-decoration: none" href="{% url 'blog:post_list' %}"
+        >BlogCity</a
+      >
+    </h1>
+    <div>
+      <button
+        id="hamburger-button"
+        class="relative h-8 w-8 cursor-pointer text-3xl md:hidden"
+      >
+        <!-- &#9776; -->
+        <div
+          class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']"
+        ></div>
+      </button>
+      <nav
+        style="text-decoration: none"
+        class="hidden space-x-8 text-xl md:block"
+        aria-label="main"
+      >
+        <a href="{% url 'account:dashboard' %}" class="hover:opacity-90"
+          >My dasboard</a
+        >
+        <a href="{% url 'blog:post_list' %}" class="hover:opacity-90">Blogs</a>
+        <a href="#" class="hover:opacity-90">Authors</a>
+
+        <span class="user">
+          {% if request.user.is_authenticated %} Hello,
+          <!--  -->
+          <form
+            style="display: inline-flex"
+            action="{% url 'account:logout' %}"
+            method="post"
+          >
+            {% csrf_token %}
+            <button class="hover:opacity-90" type="submit">Logout</button>
+          </form>
+          {% else %}
+          <a class="hover:opacity-90" href="{% url 'account:login' %}"
+            >Log-in</a
+          >
+          {% endif %}
+        </span>
+      </nav>
+    </div>
+  </section>
+  <section
+    id="mobile-menu"
+    class="top-68 justify-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl"
+  >
+    <nav
+      class="flex min-h-screen flex-col items-center py-8"
+      aria-label="mobile"
+    >
+      <a href="#hero" class="w-full py-6 text-center hover:opacity-90">Home</a>
+      <a href="#aboutme" class="w-full py-6 text-center hover:opacity-90"
+        >About me</a
+      >
+      <a href="#projects" class="w-full py-6 text-center hover:opacity-90"
+        >Projects</a
+      >
+      <a href="#testimonials" class="w-full py-6 text-center hover:opacity-90"
+        >Testimonials</a
+      >
+      <a href="#contact" class="w-full py-6 text-center hover:opacity-90"
+        >Contact me</a
+      >
+      <a href="#footer" class="w-full py-6 text-center hover:opacity-90"
+        >How to find me</a
+      >
+    </nav>
+  </section>
+</header>
